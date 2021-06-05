@@ -1,0 +1,70 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("navbarSnippet").load("navbar-snippet.html");
+            $("footerSnippet").load("footer-snippet.html");
+            $("metaSnippet").load("meta-snippet.html");
+        });
+    </script>
+
+    <metaSnippet></metaSnippet>
+
+    <title>Browse Doctors - Safegyn</title>
+</head>
+
+<body>
+
+    <navbarSnippet></navbarSnippet>
+
+    <output>
+
+        <section class="section-content padding-y">
+
+            <div class="row">
+                <div class="col-md-12 doctor-tile-container" id="doctor-tile-container">
+                </div>
+            </div>
+
+            <div class="row review-list-header">
+                <div class="col-md-6">
+                    <span class="review-list-title">Reviews</span>
+                    <button class="filter-button filter-button-active ml-2" data-toggle="modal"
+                        data-target="#filterModal">
+                        <i class="fa fa-edit"></i>&nbsp;&nbsp;&nbsp;Add Your Review
+                    </button>
+                </div>
+            </div>
+
+            <div class="row" id="doctor-review-container">
+                
+            </div>
+
+        </section>
+
+
+
+
+    </output>
+
+    <footerSnippet></footerSnippet>
+
+    <script src="js/doctor.js"></script>
+
+</body>
