@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Getter
 @Setter
@@ -15,11 +16,11 @@ public class LoginForm {
 
     @Email
     @NotNull
-    @NotEmpty
+    @Size(min = 0, max = 50)
     private String username;
 
     @NotNull
-    @NotEmpty
+    @Size(min = 6, max = 50)
     private String password;
 
 }

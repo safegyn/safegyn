@@ -52,12 +52,17 @@ public class ReviewDto {
 
     private void addReview(List<Map<String, String>> reviewContents, String city) throws ApiException {
         for (Map<String, String> reviewMap : reviewContents) {
-            reviewMap.put("city", city);
             reviewMap = NormalizeUtil.normalizeReviewMap(reviewMap);
+            reviewMap.put("CITY", getCityForReview(city, reviewMap));
+
             ValidationUtil.validateAddReviewMap(reviewMap);
 
             reviewService.addReview(reviewMap);
         }
+    }
+
+    private String getCityForReview(String city, Map<String, String> reviewMap) {
+        return reviewMap.getOrDefault("CITY", city);
     }
 
     public ReviewData getReviewsBySubmissionId(Submission submission) throws ApiException {

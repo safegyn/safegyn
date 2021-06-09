@@ -45,7 +45,7 @@ function searchByCity() {
     var city = $("#banner-search-select").find(":selected").val();
     if (!city) getErrorSnackbar("Please provide a City");
     else {
-        var url = "/browse?city=" + city;
+        var url = "/safegyn/browse?city=" + city;
         url = encodeURI(url);
         window.location.replace(url);
     }

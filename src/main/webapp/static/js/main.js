@@ -2,6 +2,9 @@ $(document).ready(function () {
 
     $('#banner-search-select').select2({
     });
+
+    $('#banner-search-select-in-filter').select2({
+    });
     
 });
 
@@ -99,7 +102,7 @@ function roundN(value, digits) {
 }
 
 function getErrorSnackbar(message) {
-    var x = document.getElementById("error-snackbar");
+    var x = document.getElementById("errorSnackbar");
     x.innerHTML = message;
     x.className = "show";
     setTimeout(function() {

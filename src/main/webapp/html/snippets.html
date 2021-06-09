@@ -35,7 +35,7 @@
 <div class="container" th:fragment="footerSnippet">
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
         <div id="snackbar"></div>
-        <div id="error-snackbar"></div>
+        <div id="errorSnackbar"></div>
         <div class="row">
             <div class="col-12 col-md pb-3 flexbox">
                 <img class="mb-2" th:src="@{/static/img/logo.png}" alt="" height="30">
@@ -90,8 +90,6 @@
     <script>
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
     ga('create', 'G-WMT7H8VDET', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-
-
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async></script>
 
@@ -112,7 +110,13 @@
 
     <link rel="icon" type="image/png" th:href="@{/static/img/logocrop.png}"/>
 
-    <meta name="description" content="">
+    <meta name="description" content="Find trustworthy Gynaecologists. Crowdsourced list of verified Gynaecologist reviews.
+    This is an attempt to crowdsource a directory of trustworthy gynaecologists. Finding doctors who are on our side is hard enough, and when it comes to something as intimate as our internal plumbing, it's even more difficult.
+    We need gynaes who are well-trained, affordable, reassuring, and above all, respectful of any sexual or lifestyle choices we make.
+    We need doctors who know that not all people want their uterus, and that not all people with uteri are women.
+    We need medical expertise devoid of moral judgements regarding how we use our bodies.
+    And we need compassionate care that we can rely on when we are scared, in pain and sick, without any shaming for being promiscuous, queer, single, trans, abused, kinky, disabled, fat, childless, or any other aspect of our social identity that should have no relevance to the quality of medical care we deserve.
+    The folks who’ve spent time and energy filling out the survey to help crowdsource this list have our gratitude! The survey remains open, and if you have a positive experience with a gynaecologist whom you’d like to see included on this list, please do fill out the form yourself to share their info  - http://goo.gl/forms/SL8WLOIqo9">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta property="og:title" content="safegyn - Find trustworthy Gynaecologists">

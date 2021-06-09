@@ -237,6 +237,14 @@ a {
     line-height: 1.25em;
     text-align: center !important;
   }
+
+  .modal-filter-text {
+    text-align: left !important;
+  }
+
+  .justify-content-end {
+      justify-content: flex-start !important;
+  }
   
   .banner-info-text {
     text-align: justify;
@@ -502,7 +510,11 @@ a:hover {
 }
 
 .justify-content-end {
-    justify-content: flex-start !important;
+    justify-content: flex-end;
+}
+
+.input-group-append {
+    height: 100%;
 }
 
 .search-result-title {
@@ -760,4 +772,31 @@ text {
 	visibility: visible;
 	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
 	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+#errorSnackbar {
+	visibility: hidden;
+	min-width: 250px;
+	margin-left: -125px;
+	background-color: #b54343;
+	color: #fff;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	right: 2%;
+	top: 2%;
+	z-index: 10005 !important;
+}
+
+#errorSnackbar.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+.modal-body {
+    max-height: 50vh;
+    overflow-y: auto;
 }

@@ -16,7 +16,6 @@ import javax.validation.constraints.Size;
 public class QuestionForm {
 
     @NotNull
-    @NotEmpty
     @Size(min = 3, max = 255, message = "Question title must be between 3 and 255 characters")
     private String title;
 

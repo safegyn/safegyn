@@ -24,10 +24,10 @@ if __name__ == '__main__':
                 json_clone_map[normalized_title] = review[title]
             json_clone[city].append(json_clone_map)
 
-        cookies = {'JSESSIONID': ''}
+        cookies = {''}
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
-        response = requests.post("http:www.safegyn.com/safegyn/api/admin/migration/reviews", json.dumps(json_clone),
+        response = requests.post("http://www.safegyn.com/safegyn/api/admin/migration/reviews", json.dumps(json_clone),
                                  cookies=cookies, headers=headers)
 
         if response.status_code != 200:

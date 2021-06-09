@@ -21,6 +21,7 @@ function getReviewDataForUrl(url) {
 }
 
 function searchByCity() {
+    getSuccessSnackbar("Loading. Please Wait");
     $('#default-search-head').css('display', 'none');
     $('#loader-gif').css('display', 'block');
     var city = $("#banner-search-select").find(":selected").val();
@@ -79,9 +80,9 @@ function displayReviewData(data) {
 
     const reviewCount = data.reviews.length;
     var reviewRows = [];
-    for (i = 0; i < Math.floor(reviewCount / 2); i += 2) {
+    for (i = 0; i < Math.floor(reviewCount/2); i += 1) {
         reviewRows.push(`<div class="row style="width:100%">` +
-            populateGetReviewTile(data.reviews[i]) + populateGetReviewTile(data.reviews[i + 1]) + `</div>`)
+            populateGetReviewTile(data.reviews[2*i]) + populateGetReviewTile(data.reviews[(2*i) + 1]) + `</div>`)
     }
 
     if (reviewCount % 2 == 1) {
@@ -110,7 +111,7 @@ function populateGetReviewTile(data) {
                                 </div>
                             </div>
                             <div class="col-md-8 doctor-tile-name flexbox-left text-left flexbox-center-mobile">
-                                <a href="/doctors?id=${id}" class="browse-doctor-name">
+                                <a href="/safegyn/doctors?id=${id}" class="browse-doctor-name">
                                     ${name}
                                 </a>
                             </div>
@@ -214,11 +215,11 @@ function searchDoctors() {
 
     var city = $('#banner-search-select-in-filter option:selected').val();
     if (!city) {
-        const urlParams = new URLSearchParams(window.location.search);
-        city = urlParams.get("city");
+        city = $("#banner-search-select").find(":selected").val();
     }
     if (!city) {
-        city = $("#banner-search-select").find(":selected").val();
+        const urlParams = new URLSearchParams(window.location.search);
+        city = urlParams.get("city");
     }
     if (!city) alert("Please select a value for 'City'")
     queryString += "city=" + city;
@@ -259,6 +260,7 @@ function fillLoader() {
 }
 
 function init() {
+    getSuccessSnackbar("Loading. Please Wait");
     getReviewData();
 }
 
