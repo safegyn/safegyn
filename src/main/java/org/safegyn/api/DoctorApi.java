@@ -50,21 +50,23 @@ public class DoctorApi extends AbstractApi {
         doctor.setAgeRange(reviewMap.get("AGE-RANGE"));
         doctor.setOfficeAddress(reviewMap.get("OFFICE ADDRESS"));
         doctor.setTelNo(reviewMap.get("OFFICE TEL. NO."));
-        doctor.setConsultationFees(reviewMap.get("STANDARD CONSULTATION FEES"));
+        doctor.setConsultationFees(reviewMap.get("STANDARD CONSULTATION FEES (INR)"));
         doctor.setPaymentForms(reviewMap.get("WHAT FORMS OF PAYMENT DO THEY ACCEPT?"));
         doctor.setOfficeHours(reviewMap.get("OFFICE HOURS"));
         doctor.setLanguagesSpoken(reviewMap.get("LANGUAGE(S) SPOKEN"));
+        doctor.setRatingCount(1);
 
         return doctor;
     }
 
     private Doctor patch(Doctor doctor, Map<String, String> reviewMap) {
+        doctor.setRatingCount(doctor.getRatingCount() + 1);
         if (Objects.isNull(doctor.getGender())) doctor.setGender(reviewMap.get("GENDER"));
         if (Objects.isNull(doctor.getAgeRange())) doctor.setAgeRange(reviewMap.get("AGE-RANGE"));
         if (Objects.isNull(doctor.getOfficeAddress())) doctor.setOfficeAddress(reviewMap.get("OFFICE ADDRESS"));
         if (Objects.isNull(doctor.getTelNo())) doctor.setTelNo(reviewMap.get("OFFICE TEL. NO."));
         if (Objects.isNull(doctor.getConsultationFees()))
-            doctor.setConsultationFees(reviewMap.get("STANDARD CONSULTATION FEES"));
+            doctor.setConsultationFees(reviewMap.get("STANDARD CONSULTATION FEES (INR)"));
         if (Objects.isNull(doctor.getPaymentForms()))
             doctor.setPaymentForms(reviewMap.get("WHAT FORMS OF PAYMENT DO THEY ACCEPT?"));
         if (Objects.isNull(doctor.getOfficeHours())) doctor.setOfficeHours(reviewMap.get("OFFICE HOURS"));
@@ -72,10 +74,14 @@ public class DoctorApi extends AbstractApi {
         return doctor;
     }
 
-    public List<Doctor> search(String city, String gender, Integer overallRating, Integer professionalRating,
-                               Integer objectiveRating, Integer respectfulRating, Integer anonymityRating) {
-        return dao.search(city, gender, overallRating, professionalRating, objectiveRating, respectfulRating, anonymityRating);
+    public List<Doctor> search(String city, String gender) {
+        return dao.search(city, gender);
     }
+
+    public List<String> getCities() {
+        return dao.getCities();
+    }
+
 }
 
 

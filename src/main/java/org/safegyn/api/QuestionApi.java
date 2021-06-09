@@ -72,6 +72,17 @@ public class QuestionApi extends AbstractApi {
                     "Question already exists with title as:\"" + title + "\"",
                     "Use a unique question title");
     }
+
+    public List<Question> getCheck(List<Long> ids) throws ApiException {
+        List<Question> questions = dao.get(ids);
+        if (ids.size() != questions.size())
+            throw new ApiException(ApiException.Type.USER_ERROR,
+                    "Getting question by IDs",
+                    "Questions don't exist for some IDs",
+                    "Double check the IDs used for lookup");
+        return questions;
+    }
+
 }
 
 

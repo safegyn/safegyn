@@ -29,6 +29,10 @@ public class QuestionService {
         return questionApi.getCheck(id);
     }
 
+    public List<Question> getCheck(List<Long> ids) throws ApiException {
+        return questionApi.getCheck(ids);
+    }
+
     public List<Question> getByCategory(Question.Category category) {
         return questionApi.get(category);
     }

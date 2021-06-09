@@ -16,11 +16,36 @@ public class SiteUiController extends AbstractUiController {
         return getModelAndView("index.html");
     }
 
+    @RequestMapping(value = "/browse")
+    public ModelAndView browse(HttpServletRequest request) {
+        return getModelAndView("browse.html");
+    }
+
+    @RequestMapping(value = "/doctors")
+    public ModelAndView doctor(HttpServletRequest request) {
+        return getModelAndView("doctor.html");
+    }
+
+    @RequestMapping(value = "/404")
+    public ModelAndView fourOhFour(HttpServletRequest request) {
+        return getModelAndView("404.html");
+    }
+
+    @RequestMapping(value = "/about")
+    public ModelAndView about(HttpServletRequest request) {
+        return getModelAndView("about.html");
+    }
+
+    @RequestMapping(value = "/contact")
+    public ModelAndView contact(HttpServletRequest request) {
+        return getModelAndView("contact.html");
+    }
+
     @RequestMapping(value = "/login")
     public ModelAndView login(HttpServletRequest request) {
         HttpSession session = request.getSession();
         if (Objects.nonNull(session.getAttribute("SPRING_SECURITY_CONTEXT")))
-            return new ModelAndView("home.html");
+            return new ModelAndView("index.html");
         return getModelAndView("login.html");
     }
 

@@ -6,7 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @ComponentScan("org.safegyn")
-@PropertySources({@PropertySource(value = "file:./safegyn.properties", ignoreResourceNotFound = true)})
+@PropertySources({@PropertySource(value = "file:./safegyn.properties", ignoreResourceNotFound = false)})
 public class SpringConfig {
 
     @Bean

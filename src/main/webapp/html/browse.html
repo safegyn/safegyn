@@ -1,0 +1,238 @@
+<!doctype html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="no-js" lang="en">
+
+<head>
+    <metaSnippet th:replace="snippets.html :: metaSnippet"></metaSnippet>
+    <title>Browse - safegyn</title>
+    <meta name="description" content="">
+
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+
+    <title>Browse Doctors - Safegyn</title>
+</head>
+
+<body>
+
+<nav th:replace="snippets.html :: navbarSnippet"></nav>
+
+<output>
+
+    <section class="section-content padding-y">
+        <div class="container pl-0 pr-0" style="border: 0px solid red;">
+            <article class="card card-body" style="border: 0px solid red; width: 90%; margin: auto;">
+                <div class="row filter-section">
+                    <div class="col-md-7">
+                        <button class="filter-button filter-button-active" data-toggle="modal"
+                                data-target="#filterModal">
+                            <i class="fa fa-filter"></i>&nbsp;&nbsp;&nbsp;Filter
+                        </button>
+                    </div>
+                    <div class="col-md-5 browse-search-bar" style="margin-right:0;">
+                        <form class="input-group justify-content-end" id="city-search-form">
+                            <select class="form-control" id="banner-search-select" name="city" style="width: 70%;"
+                                    required>
+                                <option disabled selected hidden value="">Search by City</option>
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary banner-search-btn" id="city-search-btn" type="button">
+                                    <i class="fa fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row search-result-title">
+                    <span class="font-weight-bold" id="browse-doctor-count">0</span>&nbsp;Doctors in&nbsp;<span
+                        id="browse-location" style="font-weight:bold">-</span>
+                </div>
+
+                <div id="browse-review-container">
+                    <div class="flexbox" style="width: 100%; height: 40vh;">
+                        <h3 class="muted" id="default-search-head">Select a city to search</h3>
+                        <img th:src="@{/static/img/loading.gif}" style="margin: auto; display:none" id="loader-gif">
+                    </div>
+                </div>
+            </article>
+        </div>
+
+    </section>
+
+</output>
+
+<!-- Modal -->
+<div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Filter Doctors</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="browse-filter-form">
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row filter-modal-row">
+                            <div class="col-md-4 flexbox-left">
+                                <span class="font-weight-bold">City</span>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="input-group justify-content-center">
+                                        <form class="input-group justify-content-end" id="city-search-form-in-filter">
+                                            <select class="form-control" id="banner-search-select-in-filter" name="city" style="width: 70%;"
+                                                    required>
+                                                <option disabled selected hidden value="">Use currently selected</option>
+                                            </select>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary banner-search-btn" id="city-search-btn-in-filter" type="button">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row filter-modal-row">
+                            <div class="col-md-4 flexbox-left">
+                                <span class="font-weight-bold">Gender</span>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="input-group justify-content-center">
+                                        <select class="form-control" name="gender" id="gender-select">
+                                            <option disabled selected hidden value="">Search by Doctor's Gender</option>
+                                            <option value="">Any Gender</option>
+                                            <option value="female">Female</option>
+                                            <option value="male">Male</option>
+                                            <option value="nonBinary">Non Binary</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row filter-modal-row">
+                            <div class="col-md-4 flexbox-left">
+                                <span class="font-weight-bold">Overall Rating</span>
+                            </div>
+                            <div class="col-md-8">
+                                <form name="myform"
+                                      oninput="overallRating.value = overallRatingInput.valueAsNumber +'+'">
+                                    <div class="row">
+                                        <input class="col-md-10" name="overallRatingInput" type="range" step="1" min="0"
+                                               max="4" value="0" style="width: 80%;" id="overallRatingInput">
+                                        <output class="col-md-2 font-weight-bold" name="overallRating" id="overallRatingOutput"
+                                                for="overallRatingInput" style="width: 15%; text-align: right;">0+
+                                        </output>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row filter-modal-row">
+                            <div class="col-md-4 flexbox-left">
+                                <span class="font-weight-bold">Anonymity Rating</span>
+                            </div>
+                            <div class="col-md-8">
+                                <form name="myform"
+                                      oninput="anonymityRating.value = anonymityRatingInput.valueAsNumber +'+'">
+                                    <div class="row">
+                                        <input class="col-md-10" name="anonymityRatingInput" type="range" step="1" min="0"
+                                               max="4" value="0" style="width: 80%;">
+                                        <output class="col-md-2 font-weight-bold" name="anonymityRating" id="anonymityRating"
+                                                for="anonymityRatingInput" style="width: 15%; text-align: right;">0+
+                                        </output>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row filter-modal-row">
+                            <div class="col-md-4 flexbox-left">
+                                <span class="font-weight-bold">Professional Rating</span>
+                            </div>
+                            <div class="col-md-8">
+                                <form name="myform"
+                                      oninput="professionalRating.value = professionalRatingInput.valueAsNumber +'+'">
+                                    <div class="row">
+                                        <input class="col-md-10" name="professionalRatingInput" type="range" step="1"
+                                               min="0" max="4" value="0" style="width: 80%;">
+                                        <output class="col-md-2 font-weight-bold" name="professionalRating" id="professionalRating"
+                                                for="professionalRatingInput" style="width: 15%; text-align: right;">0+
+                                        </output>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row filter-modal-row">
+                            <div class="col-md-4 flexbox-left">
+                                <span class="font-weight-bold">Objective Rating</span>
+                            </div>
+                            <div class="col-md-8">
+                                <form name="myform"
+                                      oninput="objectiveRating.value = objectiveRatingInput.valueAsNumber +'+'">
+                                    <div class="row">
+                                        <input class="col-md-10" name="objectiveRatingInput" type="range" step="1"
+                                               min="0"
+                                               max="4" value="0" style="width: 80%;">
+                                        <output class="col-md-2 font-weight-bold" name="objectiveRating" id="objectiveRating"
+                                                for="objectiveRatingInput" style="width: 15%; text-align: right;">0+
+                                        </output>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row filter-modal-row">
+                            <div class="col-md-4 flexbox-left">
+                                <span class="font-weight-bold">Respectful Rating</span>
+                            </div>
+                            <div class="col-md-8">
+                                <form name="myform"
+                                      oninput="respectfulRating.value = respectfulRatingInput.valueAsNumber +'+'">
+                                    <div class="row">
+                                        <input class="col-md-10" name="respectfulRatingInput" type="range" step="1"
+                                               min="0"
+                                               max="4" value="0" style="width: 80%;">
+                                        <output class="col-md-2 font-weight-bold" name="respectfulRating" id="respectfulRating"
+                                                for="respectfulRatingInput" style="width: 15%; text-align: right;">0+
+                                        </output>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row filter-modal-row">
+                            <div class="col-md-4 flexbox-left">
+                                <span class="font-weight-bold">Inclusivity Rating</span>
+                            </div>
+                            <div class="col-md-8">
+                                <form name="myform"
+                                      oninput="inclusiveRating.value = inclusiveRatingInput.valueAsNumber +'+'">
+                                    <div class="row">
+                                        <input class="col-md-10" name="inclusiveRatingInput" type="range" step="1"
+                                               min="0"
+                                               max="4" value="0" style="width: 80%;">
+                                        <output class="col-md-2 font-weight-bold" name="inclusiveRating" id="inclusiveRating"
+                                                for="inclusiveRatingInput" style="width: 15%; text-align: right;">0+
+                                        </output>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" formmethod="get" id="search-doctors-btn">
+                        <i class="fa fa-search"></i>&nbsp;&nbsp;Search
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="snippets.html :: footerSnippet"></footer>
+<script th:src="@{/static/js/browse.js}"></script>
+
+</body>

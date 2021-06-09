@@ -24,10 +24,13 @@ public class Doctor extends AbstractEntity {
     @Column(nullable = false)
     private String city;
 
+    private String state;
+
     private String gender;
 
     private String ageRange;
 
+    @Column(columnDefinition = "TEXT")
     private String officeAddress;
 
     private String telNo;
@@ -54,5 +57,7 @@ public class Doctor extends AbstractEntity {
 
     private double inclusivityScore = 0.0D;
     private int inclusivityScoreCount = 0;
+
+    private int ratingCount = 0;
 
 }

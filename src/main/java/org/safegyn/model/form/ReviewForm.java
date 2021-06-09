@@ -12,6 +12,6 @@ import java.util.Map;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ReviewForm {
 
-    Map<Long, String> reviewMap = new HashMap<>();
+    Map<Long, String> answers = new HashMap<>();
 
 }

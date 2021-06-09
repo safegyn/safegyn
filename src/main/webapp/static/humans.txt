@@ -1,0 +1,17 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    <safegyn-dev> -- <Developer> -- <safegyn@gmail.com>
+
+# THANKS
+
+    <@AmbaAzaad>
+
+# TECHNOLOGY COLOPHON
+
+    Bootstrap, CSS3, HTML5, jQuery
+    Apache Server Configs, jQuery, Modernizr, Normalize.css
+    Java, Spring, Hibernate, MySQL, Apache Tomcat
+    IDE: Visual Studio Code, Intellij IDEA, PyCharm, Sublime Text

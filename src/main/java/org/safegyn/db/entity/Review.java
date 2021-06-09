@@ -8,9 +8,10 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(indexes = {
-        @Index(name = "review_submission_index", columnList = "submissionId"),
-        @Index(name = "review_submission_question", columnList = "questionId")})
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"submissionId", "questionId"})},
+        indexes = {
+                @Index(name = "review_submission_index", columnList = "submissionId"),
+                @Index(name = "review_submission_question", columnList = "questionId")})
 public class Review extends AbstractEntity {
 
     @Id

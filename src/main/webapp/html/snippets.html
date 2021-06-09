@@ -1,0 +1,145 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<header class="section-header shell-border" th:fragment="navbarSnippet">
+    <nav class="navbar navbar-main navbar-expand-lg navbar-light shell-border">
+        <div class="container shell-border">
+
+            <a class="navbar-brand" th:href="@{/}"><img th:src="@{/static/img/logo.png}" class="logo"></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+                    aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse navbar-controls" id="navbarTogglerDemo03">
+                <ul class="navbar-nav ml-auto mr-sm-2 mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link pr-0 mr-3" th:href="@{/browse}">
+                            <i class="fa fa-search rounded-circle mr-2 nav-icon"></i>
+                            Browse Doctors <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pr-0" href="http://goo.gl/forms/SL8WLOIqo9">
+                            <i class="fa fa-pen rounded-circle mr-2 nav-icon"></i>
+                            Review Doctor
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+
+<div class="container" th:fragment="footerSnippet">
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div id="snackbar"></div>
+        <div id="error-snackbar"></div>
+        <div class="row">
+            <div class="col-12 col-md pb-3 flexbox">
+                <img class="mb-2" th:src="@{/static/img/logo.png}" alt="" height="30">
+                <small class="d-block mb-3 text-muted">© 2021</small>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Links</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC
+                        License</a>
+                    </li>
+                    <li><a class="text-muted"
+                           href="https://docs.google.com/document/d/17Z8mrQo80A_kYwGN-j9MjH1ppSTWjVxDgYK0njpb6yE/pub"
+                           target="_blank">About
+                        the Data</a></li>
+                    <li><a class="text-muted"
+                           href="https://www.google.com/url?q=https://docs.google.com/document/d/17Z8mrQo80A_kYwGN-j9MjH1ppSTWjVxDgYK0njpb6yE/pub&sa=D&source=editors&ust=1621712125377000&usg=AFQjCNH9Xi80W3vkea6yMTlfGjo8Ci0TYg"
+                           target="_blank">Directory</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>For Developers</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" th:href="@{/swagger-ui.html}" target="_blank">Data APIs</a></li>
+                    <li><a class="text-muted" href="https://github.com/safegyn/safegyn" target="_blank">Source Code</a>
+                    </li>
+                    <li><a class="text-muted" href="https://github.com/safegyn/safegyn/issues" target="_blank">Report
+                        Bugs</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>About</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" th:href="@{/about}">About SafeGyn</a></li>
+                    <li><a class="text-muted" th:href="@{/contact}">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script th:src="@{/static/js/jquery-2.0.0.min.js}"></script>
+    <script th:src="@{/static/js/jscroll.js}"></script>
+    <script th:src="@{/static/js/select2.min.js}"></script>
+    <script th:src="@{/static/js/popper.min.js}"></script>
+    <script th:src="@{/static/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/static/js/vendor/modernizr-3.11.2.min.js}"></script>
+    <script th:src="@{/static/js/plugins.js}"></script>
+    <script th:src="@{/static/js/main.js}"></script>
+
+
+    <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'G-WMT7H8VDET', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+
+
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async></script>
+
+</div>
+
+<metaContainer th:fragment="metaSnippet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMT7H8VDET"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-WMT7H8VDET');
+
+    </script>
+
+    <link rel="icon" type="image/png" th:href="@{/static/img/logocrop.png}"/>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:title" content="safegyn - Find trustworthy Gynaecologists">
+    <meta property="og:type"
+          content="safegyn was created to provide a portal to the excellent crowdsourced list of gynaecologist reviews">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="author" th:href="@{static/humans.txt}"/>
+
+    <link th:href="@{static/css/bootstrap.css}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" th:href="@{static/css/normalize.css}">
+    <link rel="stylesheet" th:href="@{static/css/main.css}">
+
+    <link th:href="@{static/fonts/fontawesome/css/all.min.css}" type="text/css" rel="stylesheet">
+    <link th:href="@{static/fonts/feathericons/css/iconfont.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{static/fonts/material-icons/css/materialdesignicons.css}" rel="stylesheet" type="text/css"/>
+
+    <link th:href="@{static/css/ui.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{static/css/responsive.css}" rel="stylesheet"/>
+    <link th:href="@{static/css/select2.min.css}" rel="stylesheet"/>
+
+    <meta name="theme-color" content="#fafafa">
+
+    <link rel="manifest" th:href="@{/static/site.webmanifest}">
+    <link rel="apple-touch-icon" href="icon.png">
+</metaContainer>
+
+</html>

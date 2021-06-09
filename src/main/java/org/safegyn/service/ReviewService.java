@@ -8,7 +8,9 @@ import org.safegyn.db.entity.Doctor;
 import org.safegyn.db.entity.Question;
 import org.safegyn.db.entity.Review;
 import org.safegyn.db.entity.Submission;
+import org.safegyn.model.data.DoctorSearchData;
 import org.safegyn.model.error.ApiException;
+import org.safegyn.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,24 +55,28 @@ public class ReviewService {
 
         List<Review> reviews = new ArrayList<>();
         for (Map.Entry<String, String> entry : reviewMap.entrySet()) {
-            Question question = questionApi.getCheck(entry.getKey());
-            Review review = getReview(submission.getId(), entry.getValue(), question);
-
-            reviews.add(review);
+            if (StringUtil.isEmpty(entry.getValue()) || entry.getValue().equals("I DON'T KNOW")) continue;
+            addReview(submission, reviews, entry);
         }
 
         updateScores(submission.getDoctorId(), reviews);
         reviewApi.add(reviews);
     }
 
+    private void addReview(Submission submission, List<Review> reviews, Map.Entry<String, String> entry) throws ApiException {
+        Question question = questionApi.getCheck(entry.getKey());
+        Review review = getReview(submission.getId(), entry.getValue(), question);
+        reviews.add(review);
+    }
+
     private void updateScores(Long doctorId, List<Review> reviews) throws ApiException {
         Doctor doctor = doctorApi.getCheck(doctorId);
 
         for (Review review : reviews) {
-            Question question = questionApi.getCheck(review.getId());
+            Question question = questionApi.getCheck(review.getQuestionId());
             Double score = review.getScore();
 
-            if (Objects.nonNull(score)) continue;
+            if (Objects.isNull(score)) continue;
 
             if (question.getCategory().equals(Question.Category.ANONYMITY)) {
                 doctor.setAnonymityScore(doctor.getAnonymityScore() + review.getScore());
@@ -96,7 +102,6 @@ public class ReviewService {
                 doctor.setRespectfulnessScore(doctor.getRespectfulnessScore() + review.getScore());
                 doctor.setRespectfulnessScoreCount(doctor.getRespectfulnessScoreCount() + 1);
             }
-
         }
     }
 
@@ -105,7 +110,7 @@ public class ReviewService {
         review.setSubmissionId(submissionId);
         review.setQuestionId(question.getId());
         review.setAnswer(answer);
-        review.setScore(getScaledScore(1, 4, getScore(answer)));
+        review.setScore(getScaledScore(0, 4, getScore(answer)));
         return review;
     }
 

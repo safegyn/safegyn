@@ -1,6 +1,7 @@
 package org.safegyn.db.dao;
 
 import org.safegyn.db.entity.Doctor;
+import org.safegyn.db.entity.Review;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
@@ -27,28 +28,23 @@ public class DoctorDao extends AbstractDao<Doctor> {
         return selectSingleOrNull(tQuery);
     }
 
-    public List<Doctor> search(String city, String gender, Integer overallRating, Integer professionalRating,
-                               Integer objectiveRating, Integer respectfulRating, Integer anonymityRating) {
+    public List<String> getCities() {
+        CriteriaBuilder criteriaBuilder = getCriteriaBuilder();
+        CriteriaQuery<String> query = criteriaBuilder.createQuery(String.class);
+        Root<Doctor> root = query.from(Doctor.class);
+        query.select(root.get("city")).distinct(true);
+        return this.em.createQuery(query).getResultList();
+    }
+
+    public List<Doctor> search(String city, String gender) {
         CriteriaBuilder cb = getCriteriaBuilder();
         CriteriaQuery<Doctor> criteriaQuery = cb.createQuery(Doctor.class);
         Root<Doctor> root = criteriaQuery.from(Doctor.class);
 
         Predicate predicate = cb.and();
         predicate = cb.and(predicate, cb.equal(root.get("city"), city));
-
         if (Objects.nonNull(gender)) predicate = cb.and(predicate, cb.equal(root.get("gender"), gender));
-        if (Objects.nonNull(overallRating))
-            predicate = cb.and(predicate, cb.greaterThanOrEqualTo(root.get("overallRating"), overallRating));
-        if (Objects.nonNull(professionalRating))
-            predicate = cb.and(predicate, cb.greaterThanOrEqualTo(root.get("professionalRating"), professionalRating));
-        if (Objects.nonNull(objectiveRating))
-            predicate = cb.and(predicate, cb.greaterThanOrEqualTo(root.get("objectiveRating"), objectiveRating));
-        if (Objects.nonNull(respectfulRating))
-            predicate = cb.and(predicate, cb.greaterThanOrEqualTo(root.get("respectfulRating"), respectfulRating));
-        if (Objects.nonNull(anonymityRating))
-            predicate = cb.and(predicate, cb.greaterThanOrEqualTo(root.get("anonymityRating"), anonymityRating));
 
         return createQuery(criteriaQuery.where(predicate)).getResultList();
     }
-
 }

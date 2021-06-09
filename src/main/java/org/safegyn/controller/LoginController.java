@@ -35,12 +35,9 @@ public class LoginController {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    @Autowired
-    private LoginMessageData data;
-
     @ApiOperation(value = "Log in a user using their username and password")
     @RequestMapping(path = "/api/admin/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public ModelAndView login(HttpServletRequest req, LoginForm loginForm) {
+    public ModelAndView login(HttpServletRequest req, LoginForm loginForm) throws ApiException {
         User user = null;
         try {
             user = userApi.getCheckByUsername(loginForm.getUsername());
@@ -48,10 +45,9 @@ public class LoginController {
         }
 
         boolean authenticated = (Objects.nonNull(user) && passwordEncoder.matches(loginForm.getPassword(), user.getPasswordDigest()));
-        if (!authenticated) {
-            data.setMessage("Invalid username or password");
-            return new ModelAndView("redirect:/login");
-        }
+        if (!authenticated)
+            throw new ApiException(ApiException.Type.USER_ERROR, "Logging in", "User not authenticated", "Check your credentials");
+
 
         List<UserRole> userRoles = Collections.singletonList(user.getUserRole());
         Authentication authentication = AuthHelper.getAuthenticationToken(user, userRoles);
@@ -59,7 +55,7 @@ public class LoginController {
         session.setMaxInactiveInterval(SESSION_MAX_ACTIVE_SECONDS);
         AuthHelper.createContext(session);
         AuthHelper.setAuthentication(authentication);
-        return new ModelAndView("redirect:/home");
+        return new ModelAndView("redirect:/");
     }
 
     @ApiOperation(value = "Log out a user")

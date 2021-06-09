@@ -18,7 +18,7 @@ public class ApiException extends Exception {
     private Collection<FieldErrorData> errors;
 
     public ApiException(Type type, String context, String problem, String solution) {
-        super("A " + type.name() + " has occurred!\n " + context + "\n " + problem + "\n " + solution);
+        super(type.name() + "<br />Problem: " + problem + "<br />Suggestion: " + solution);
         this.type = type;
         this.context = context;
         this.problem = problem;

@@ -1,0 +1,116 @@
+<!doctype html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="no-js" lang="en">
+
+<head>
+    <metaSnippet th:replace="snippets.html :: metaSnippet"></metaSnippet>
+    <title>safegyn - Home</title>
+</head>
+
+<body>
+
+<nav th:replace="snippets.html :: navbarSnippet"></nav>
+
+<output>
+
+    <section class="section-content padding-y">
+
+        <div class="container pl-0 pr-0">
+            <article class="card card-body">
+                <div class="row">
+                    <div class="col-md-6 pl-5 pr-5">
+                        <p class="banner-title-text">
+                            Crowdsourced List of Gynaecologists<br>
+                            <span class="banner-title-text-highlight">You Can Trust</span>
+                        </p>
+                        <p class="banner-info-text">
+                            Browse verified, in-depth reviews and find gynaes who are well-trained, affordable,
+                            reassuring, and above
+                            all, respectful of any sexual or lifestyle choices while being devoid of moral
+                            judgements
+                            <a href="https://docs.google.com/document/d/17Z8mrQo80A_kYwGN-j9MjH1ppSTWjVxDgYK0njpb6yE/pub"
+                               target="_blank">
+                                Read More
+                            </a>
+                        </p>
+                        <div class="cc-div">
+                            <div>
+                                <img class="cc-license-img" th:src="@{/static/img/cc.png}"/>
+                                <img class="cc-license-img" th:src="@{/static/img/by.png}"/>
+                                <img class="cc-license-img" th:src="@{/static/img/nc.png}"/>
+                                <img class="cc-license-img" th:src="@{/static/img/sa.png}"/>
+                            </div>
+                            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"
+                               data-toggle="tooltip" class="popover-info-text"
+                               title="The Crowdsourced List of Gynaecologists We Trust In India, managed by Amba Azaad, is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">
+                                <small style="font-weight: bolder;">BY-NC-SA 4.0 (Amba Azad)</small>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 pb-3 banner-search-section flexbox">
+                        <div class="container">
+                            <div class="row pl-4 pr-4">
+                                <div class="col-sm-4 banner-stat-tile">
+                                        <span class="banner-stat-tile-value" id="banner-city-count">
+                                            <i class="fa fa-map-pin banner-icon"></i> <span
+                                                id="index-city-count">20</span>+
+                                        </span><br/>
+                                    <div class="">
+                                        Cities
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 banner-stat-tile">
+                                        <span class="banner-stat-tile-value" id="banner-review-count">
+                                            <i class="fa fa-star banner-icon"></i> <span
+                                                id="index-review-count">120</span>+
+                                        </span><br/>
+                                    <div class="rating-wrap">
+                                        Reviews
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 banner-stat-tile">
+                                        <span class="banner-stat-tile-value" id="banner-doctor-count">
+                                            <i class="fa fa-user-circle banner-icon"></i> <span id="index-doctor-count">60</span>+
+                                        </span><br/>
+                                    <div class="rating-wrap">
+                                        Gynaes
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="input-group justify-content-center">
+                                    <select class="form-control" id="banner-search-select" name="city"
+                                            style="width: 70%;">
+                                        <option disabled selected hidden value="">Browse doctors in your city</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary banner-search-btn" type="button" id="search-doctor-btn">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flexbox">
+                                <div class="index-review-link font-weight-bold mt-2" style="width: 70%;">
+                                    <a
+                                            href="https://docs.google.com/forms/d/e/1FAIpQLSeYciqN9Tz-EMAbXyz3gO06wC4LSyUyExCKlOXXx3dCDjF0Hg/viewform?c=0&w=1">
+                                        <i class="fa fa-pen rounded-circle"></i>&nbsp; Review a Doctor
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+    </section>
+
+</output>
+
+<footer th:replace="snippets.html :: footerSnippet"></footer>
+<script th:src="@{/static/js/index.js}"></script>
+
+</body>
+
+</html>
