@@ -9,7 +9,7 @@ $(document).ready(function () {
 });
 
 function getBaseUrl() {
-    return "http://safegyn.com/safegyn/api";
+    return "https://safegyn.com/safegyn/api";
 }
 
 var ALERT_TITLE = ' Error!';

@@ -32,6 +32,20 @@ public class MiscellaneousController {
         }
     }
 
+    @ApiOperation(value = "Get sitemap.txt")
+    @RequestMapping(path = "/sitemap.txt", method = RequestMethod.GET)
+    public void sitemap(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            response.getWriter().write("http://www.safegyn.com/safegyn/contact\n" +
+                    "http://www.safegyn.com/safegyn/browse\n" +
+                    "http://www.safegyn.com/safegyn/about\n" +
+                    "http://www.safegyn.com/safegyn/\n" +
+                    "http://www.safegyn.com/safegyn/swagger-ui.html");
+        } catch (IOException e) {
+            logger.error("Failed to serve sitemap.txt due to \n" + e.getMessage());
+        }
+    }
+
     @ApiOperation(value = "Change logging level")
     @RequestMapping(path = "/api/log-level", method = RequestMethod.PUT)
     public ResponseEntity<Object> changeLogLevel(@RequestParam Level level) {
