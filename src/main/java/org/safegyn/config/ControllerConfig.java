@@ -39,6 +39,9 @@ public class ControllerConfig extends WebMvcConfigurerAdapter {
 
     private ApplicationContext applicationContext;
 
+    /* Time, in seconds, to have the browser cache static resources (one week). */
+    private static final int BROWSER_CACHE_CONTROL = 604800;
+
     public void setApplicationContext(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
@@ -57,7 +60,7 @@ public class ControllerConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
-        registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+        registry.addResourceHandler("/static/**").addResourceLocations("/static/").setCachePeriod(BROWSER_CACHE_CONTROL);;
     }
 
     @Override
