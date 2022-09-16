@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="576.7" height="295.5" viewBox="0 0 576.7 295.5">
+  <defs>
+    <filter id="Icon_feather-shield" x="0" y="0" width="234.742" height="278.928" filterUnits="userSpaceOnUse">
+      <feOffset dx="3" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#b00000" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Icon_awesome-feather" x="11.548" y="46.366" width="206.194" height="206.196" filterUnits="userSpaceOnUse">
+      <feOffset dx="3" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4" result="blur-2"/>
+      <feFlood flood-color="#8e0c0c" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="SAFE_GYN" x="241.7" y="8.5" width="335" height="287" filterUnits="userSpaceOnUse">
+      <feOffset dx="3" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-3"/>
+      <feFlood flood-opacity="0.102"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Component_2_1" data-name="Component 2 – 1" transform="translate(20.548 10)">
+    <g id="Component_1_1" data-name="Component 1 – 1" transform="translate(0 16)">
+      <g transform="matrix(1, 0, 0, 1, -20.55, -26)" filter="url(#Icon_feather-shield)">
+        <path id="Icon_feather-shield-2" data-name="Icon feather-shield" d="M94.371,223.928s88.371-44.186,88.371-110.464V36.139L94.371,3,6,36.139v77.325C6,179.742,94.371,223.928,94.371,223.928Z" transform="translate(20 23)" fill="#e23028" stroke="#e23028" stroke-linecap="round" stroke-linejoin="round" stroke-width="40"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, -20.55, -26)" filter="url(#Icon_awesome-feather)">
+        <path id="Icon_awesome-feather-2" data-name="Icon awesome-feather" d="M155.746,14.951c-20.855-20.831-53.9-21.6-84.112,8.579C45.425,49.709,51.3,43.841,43.045,52.089c-20.158,20.134-23.468,50.288-21.218,70.405L81.32,63.065a5.337,5.337,0,1,1,7.552,7.545L2.346,157.045a8.006,8.006,0,0,0,11.329,11.316l22.038-22.015c17.437,5.238,57.306,6.058,82.294-18.317H85.271l49.2-16.384C151.138,95,146.6,99.583,149.911,96.022h-32.6l43.856-14.6c15.15-24.825,11.439-49.624-5.421-66.468Z" transform="matrix(1, -0.07, 0.07, 1, 20.55, 67.27)" fill="#fff"/>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, -20.55, -10)" filter="url(#SAFE_GYN)">
+      <text id="SAFE_GYN-2" data-name="SAFEGYN" transform="translate(406.2 128)" fill="#3d3d3d" font-size="122" font-family="Montserrat-Regular, Montserrat"><tspan x="-160.674" y="0">SAFE</tspan><tspan font-size="143" font-family="Montserrat-ExtraBold, Montserrat" font-weight="800"><tspan x="-162.019" y="124">GYN</tspan></tspan></text>
+    </g>
+  </g>
+</svg>

@@ -51,7 +51,7 @@ public class ControllerConfig extends WebMvcConfigurerAdapter {
         return new Docket(DocumentationType.SWAGGER_2)
                 .useDefaultResponseMessages(false)
                 .select().apis(RequestHandlerSelectors.basePackage(PACKAGE_CONTROLLER))
-                .paths(PathSelectors.regex("/.*"))
+                .paths(PathSelectors.regex("/api/.*"))
                 .build();
     }
 
@@ -60,7 +60,8 @@ public class ControllerConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
-        registry.addResourceHandler("/static/**").addResourceLocations("/static/").setCachePeriod(BROWSER_CACHE_CONTROL);;
+        registry.addResourceHandler("/static/**").addResourceLocations("/static/").setCachePeriod(BROWSER_CACHE_CONTROL);
+        registry.addResourceHandler("/safegyn/**").addResourceLocations("/safegyn/static/").setCachePeriod(BROWSER_CACHE_CONTROL);
     }
 
     @Override
